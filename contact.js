@@ -7,8 +7,7 @@ navToggle.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
 
-// Firebase configuration - Replace with your own Firebase project config
-// IMPORTANT: These are public keys that are safe to include in client-side code
+
 const firebaseConfig = {
   apiKey: "AIzaSyB9VbCbqfKrfoCmX6kae_-N_UyHpBUjIjA",
   authDomain: "contact-egedal-devlopment.firebaseapp.com",
