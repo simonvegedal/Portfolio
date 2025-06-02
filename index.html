@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="https://schema.org/Person">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -172,12 +172,34 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
     
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4HQCB1L3QB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-4HQCB1L3QB', {
+            page_title: 'Simon Egedal | Web Developer Portfolio',
+            page_location: 'https://egedal.dev',
+            custom_map: {
+                'dimension1': 'portfolio_section'
+            }
+        });
+        
+        // Enhanced eCommerce tracking for contact form
+        gtag('config', 'G-4HQCB1L3QB', {
+            send_page_view: true,
+            allow_google_signals: true,
+            allow_ad_personalization_signals: true
+        });
+    </script>
+    
+    <!-- Google Tag Manager (Optional - if you also want GTM) -->
+    <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script> -->
     <!-- End Google Tag Manager -->
     
     <!-- Schema.org Microdata -->
@@ -197,17 +219,12 @@
     <link rel="alternate" hreflang="x-default" href="https://egedal.dev/">
 </head>
 
-
-
-<body >
-
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9G999LC"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
+<body itemscope itemtype="https://schema.org/WebPage">
+    <!-- Skip to main content for accessibility -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+    
     <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
+    <div class="loading-screen" id="loadingScreen" aria-hidden="true">
         <div class="loader">
             <div class="loader-logo">Simon<span>E</span></div>
             <div class="loading-bars">
@@ -222,213 +239,223 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <!-- Header -->
-    <header id="header">
+    <header id="header" role="banner">
         <div class="container">
-            <nav>
-                <a href="#" class="logo">Simon<span>E</span></a>
+            <nav role="navigation" aria-label="Main navigation">
+                <a href="#hero" class="logo" aria-label="Simon Egedal - Web Developer">Simon<span>E</span></a>
                 <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#github">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#about" aria-label="About Simon Egedal">About</a></li>
+                    <li><a href="#skills" aria-label="Web Development Skills">Skills</a></li>
+                    <li><a href="#github" aria-label="GitHub Projects">Projects</a></li>
+                    <li><a href="#contact" aria-label="Contact Information">Contact</a></li>
                 </ul>
-                <button class="nav-toggle" id="navToggle">
-                    <i class="fas fa-bars"></i>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
                 </button>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-particles" id="heroParticles"></div>
-        <div class="container">
-            <div class="hero-content">
-                <h1>Hi, I'm Simon Egedal</h1>
-                <p>A passionate web developer crafting modern, responsive web applications using cutting-edge technologies like React, JavaScript, and Node.js.</p>
-                <div class="hero-btns">
-                    <a href="#contact" class="btn">
-                        <i class="fas fa-envelope"></i>
-                        Get In Touch
+    <!-- Main Content -->
+    <main id="main" role="main">
+        <!-- Hero Section -->
+        <section class="hero" id="hero" aria-labelledby="hero-heading">
+            <div class="hero-particles" id="heroParticles" aria-hidden="true"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1 id="hero-heading" itemprop="name">Hi, I'm Simon Egedal</h1>
+                    <p itemprop="description">A passionate web developer crafting modern, responsive web applications using cutting-edge technologies like React, JavaScript, and Node.js.</p>
+                    <div class="hero-btns">
+                        <a href="#contact" class="btn" aria-label="Get in touch with Simon Egedal">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            Get In Touch
+                        </a>
+                        <a href="#github" class="btn btn-secondary" aria-label="View Simon's GitHub projects">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                            View My Work
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about section" id="about" aria-labelledby="about-heading">
+            <div class="parallax-bg" aria-hidden="true"></div>
+            <div class="container">
+                <div class="section-title scroll-reveal">
+                    <h2 id="about-heading">About Me</h2>
+                    <p>Get to know more about my journey and passion for web development</p>
+                </div>
+                <div class="about-content">
+                    <div class="about-img scroll-reveal-left">
+                        <img src="picture.jpg" alt="Simon Egedal - Professional Web Developer from Billund, Denmark" itemprop="image" loading="lazy" width="400" height="400">
+                    </div>
+                    <div class="about-text scroll-reveal-right">
+                        <h3>Crafting Digital Experiences</h3>
+                        <p itemprop="description">I'm a web developer based in <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress"><span itemprop="addressLocality">Billund</span>, <span itemprop="addressCountry">Denmark</span></span>, with a passion for creating beautiful, functional, and user-friendly websites and applications.</p>
+                        <p>My journey in web development started with curiosity and has evolved into a deep love for problem-solving and bringing ideas to life through code.</p>
+                        <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying the beautiful Danish countryside.</p>
+                        <a href="#contact" class="btn" aria-label="Contact Simon for a chat about your project">
+                            <i class="fas fa-coffee" aria-hidden="true"></i>
+                            Let's Chat
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills section" id="skills" aria-labelledby="skills-heading">
+            <div class="container">
+                <div class="section-title scroll-reveal">
+                    <h2 id="skills-heading">My Skills</h2>
+                    <p>Technologies and tools I use to bring projects to life</p>
+                </div>
+                <div class="skills-container">
+                    <article class="skill-card scroll-reveal stagger-delay-1">
+                        <div class="skill-icon">
+                            <i class="fab fa-react" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-title">Frontend Development</h3>
+                        <p class="skill-desc">React, JavaScript, HTML5, CSS3, and modern frontend frameworks to create responsive and interactive user interfaces.</p>
+                    </article>
+                    <article class="skill-card scroll-reveal stagger-delay-2">
+                        <div class="skill-icon">
+                            <i class="fas fa-server" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-title">Backend Development</h3>
+                        <p class="skill-desc">Node.js, Express, and database management to build robust server-side applications and APIs.</p>
+                    </article>
+                    <article class="skill-card scroll-reveal stagger-delay-3">
+                        <div class="skill-icon">
+                            <i class="fas fa-database" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-title">Database Management</h3>
+                        <p class="skill-desc">MongoDB, Firebase, and SQL databases for efficient data storage and retrieval solutions.</p>
+                    </article>
+                    <article class="skill-card scroll-reveal stagger-delay-4">
+                        <div class="skill-icon">
+                            <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-title">Responsive Design</h3>
+                        <p class="skill-desc">Mobile-first approach ensuring seamless user experience across all devices and screen sizes.</p>
+                    </article>
+                    <article class="skill-card scroll-reveal stagger-delay-5">
+                        <div class="skill-icon">
+                            <i class="fab fa-git-alt" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-title">Version Control & Collaboration</h3>
+                        <p class="skill-desc">Git, GitHub, and collaborative development workflows for efficient team-based project management and code versioning.</p>
+                    </article>
+                    <article class="skill-card scroll-reveal stagger-delay-6">
+                        <div class="skill-icon">
+                            <i class="fas fa-tachometer-alt" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="skill-title">Performance Optimization</h3>
+                        <p class="skill-desc">Code optimization, lazy loading, and performance monitoring to deliver fast, efficient web applications.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- GitHub Section -->
+        <section class="github section" id="github" aria-labelledby="github-heading">
+            <div class="container">
+                <div class="github-content scroll-reveal-scale">
+                    <div class="github-icon">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                    </div>
+                    <div class="github-text">
+                        <h2 id="github-heading">Check Out My Projects</h2>
+                        <p>Explore my latest work and contributions on GitHub. From personal projects to open-source contributions, see what I've been building.</p>
+                    </div>
+                    <a href="https://github.com/simonegedal" target="_blank" rel="noopener noreferrer" class="github-btn btn" aria-label="Visit Simon Egedal's GitHub profile (opens in new tab)">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                        Visit My GitHub
                     </a>
-                    <a href="#github" class="btn btn-secondary">
-                        <i class="fab fa-github"></i>
-                        View My Work
-                    </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About Section -->
-    <section class="about section" id="about">
-        <div class="parallax-bg"></div>
-        <div class="container">
-            <div class="section-title scroll-reveal">
-                <h2>About Me</h2>
-                <p>Get to know more about my journey and passion for web development</p>
-            </div>
-            <div class="about-content">
-                <div class="about-img scroll-reveal-left">
-                    <img src="picture.jpg" alt="Simon Egedal">
+        <!-- Contact Section -->
+        <section class="contact section" id="contact" aria-labelledby="contact-heading">
+            <div class="container">
+                <div class="section-title scroll-reveal">
+                    <h2 id="contact-heading">Get In Touch</h2>
+                    <p>Let's discuss your next project or just say hello</p>
                 </div>
-                <div class="about-text scroll-reveal-right">
-                    <h3>Crafting Digital Experiences</h3>
-                    <p>I'm a web developer based in Billund, Denmark, with a passion for creating beautiful, functional, and user-friendly websites and applications.</p>
-                    <p>My journey in web development started with curiosity and has evolved into a deep love for problem-solving and bringing ideas to life through code.</p>
-                    <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying the beautiful Danish countryside.</p>
-                    <a href="#contact" class="btn">
-                        <i class="fas fa-coffee"></i>
-                        Let's Chat
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="contact-item scroll-reveal-left stagger-delay-1">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Email</h3>
+                                <p><a href="mailto:egedal@workmail.com" itemprop="email">egedal@workmail.com</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item scroll-reveal-left stagger-delay-2">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Location</h3>
+                                <p itemprop="address">Billund, Denmark</p>
+                            </div>
+                        </div>
+                        <div class="contact-item scroll-reveal-left stagger-delay-3">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone" aria-hidden="true"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Phone</h3>
+                                <p><a href="tel:+4520208094" itemprop="telephone">+45 20 20 80 94</a></p>
+                            </div>
+                        </div>
+                    </div>
 
-    <!-- Skills Section -->
-    <section class="skills section" id="skills">
-        <div class="container">
-            <div class="section-title scroll-reveal">
-                <h2>My Skills</h2>
-                <p>Technologies and tools I use to bring projects to life</p>
-            </div>
-            <div class="skills-container">
-                <div class="skill-card scroll-reveal stagger-delay-1">
-                    <div class="skill-icon">
-                        <i class="fab fa-react"></i>
+                    <!-- Contact Form -->
+                    <div class="contact-form scroll-reveal-right">
+                        <form id="contactForm" aria-labelledby="contact-form-heading">
+                            <h3 id="contact-form-heading" class="sr-only">Contact Form</h3>
+                            <div class="form-group">
+                                <label for="nameField" class="sr-only">Your Name</label>
+                                <input type="text" id="nameField" name="name" class="form-control" placeholder="Your Name" required aria-describedby="name-error">
+                                <div id="name-error" class="error-message" role="alert"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="emailField" class="sr-only">Your Email</label>
+                                <input type="email" id="emailField" name="email" class="form-control" placeholder="Your Email" required aria-describedby="email-error">
+                                <div id="email-error" class="error-message" role="alert"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="messageField" class="sr-only">Your Message</label>
+                                <textarea id="messageField" name="message" class="form-control" placeholder="Your Message" required aria-describedby="message-error"></textarea>
+                                <div id="message-error" class="error-message" role="alert"></div>
+                            </div>
+                            <button type="submit" class="btn" id="submitBtn" aria-describedby="submit-status">
+                                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                                Send Message
+                            </button>
+                        </form>
+                        
+                        <div id="statusMessage" class="status-message" role="status" aria-live="polite"></div>
                     </div>
-                    <h4 class="skill-title">Frontend Development</h4>
-                    <p class="skill-desc">React, JavaScript, HTML5, CSS3, and modern frontend frameworks to create responsive and interactive user interfaces.</p>
-                </div>
-                <div class="skill-card scroll-reveal stagger-delay-2">
-                    <div class="skill-icon">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <h4 class="skill-title">Backend Development</h4>
-                    <p class="skill-desc">Node.js, Express, and database management to build robust server-side applications and APIs.</p>
-                </div>
-                <div class="skill-card scroll-reveal stagger-delay-3">
-                    <div class="skill-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h4 class="skill-title">Database Management</h4>
-                    <p class="skill-desc">MongoDB, Firebase, and SQL databases for efficient data storage and retrieval solutions.</p>
-                </div>
-                <div class="skill-card scroll-reveal stagger-delay-4">
-                    <div class="skill-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h4 class="skill-title">Responsive Design</h4>
-                    <p class="skill-desc">Mobile-first approach ensuring seamless user experience across all devices and screen sizes.</p>
-                </div>
-                <div class="skill-card scroll-reveal stagger-delay-5">
-                    <div class="skill-icon">
-                        <i class="fab fa-git-alt"></i>
-                    </div>
-                    <h4 class="skill-title">Version Control & Collaboration</h4>
-                    <p class="skill-desc">Git, GitHub, and collaborative development workflows for efficient team-based project management and code versioning.</p>
-                </div>
-                <div class="skill-card scroll-reveal stagger-delay-6">
-                    <div class="skill-icon">
-                        <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    <h4 class="skill-title">Performance Optimization</h4>
-                    <p class="skill-desc">Code optimization, lazy loading, and performance monitoring to deliver fast, efficient web applications.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- GitHub Section -->
-    <section class="github section" id="github">
-        <div class="container">
-            <div class="github-content scroll-reveal-scale">
-                <div class="github-icon">
-                    <i class="fab fa-github"></i>
-                </div>
-                <div class="github-text">
-                    <h3>Check Out My Projects</h3>
-                    <p>Explore my latest work and contributions on GitHub. From personal projects to open-source contributions, see what I've been building.</p>
-                </div>
-                <a href="https://github.com/simonegedal" target="_blank" class="github-btn btn">
-                    <i class="fab fa-github"></i>
-                    Visit My GitHub
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact section" id="contact">
-        <div class="container">
-            <div class="section-title scroll-reveal">
-                <h2>Get In Touch</h2>
-                <p>Let's discuss your next project or just say hello</p>
-            </div>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-item scroll-reveal-left stagger-delay-1">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Email</h4>
-                            <p>egedal@workmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item scroll-reveal-left stagger-delay-2">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Location</h4>
-                            <p>Billund, Denmark</p>
-                        </div>
-                    </div>
-                    <div class="contact-item scroll-reveal-left stagger-delay-3">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Phone</h4>
-                            <p>+45 20 20 80 94</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contact Form -->
-                <div class="contact-form scroll-reveal-right">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" id="nameField" class="form-control" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="emailField" class="form-control" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="messageField" class="form-control" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn" id="submitBtn">
-                            <i class="fas fa-paper-plane"></i>
-                            Send Message
-                        </button>
-                    </form>
-                    
-                    <div id="statusMessage" class="status-message"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">Simon<span>E</span></div>
                 <div class="social-links">
-                    <a href="https://github.com/simonvegedal" class="social-link">
-                        <i class="fab fa-github"></i>
+                    <a href="https://github.com/simonegedal" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Visit Simon's GitHub profile (opens in new tab)">
+                        <i class="fab fa-github" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
@@ -439,11 +466,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </footer>
 
     <!-- Back to Top Button -->
-    <a href="#hero" class="back-to-top" id="backToTop">
-        <i class="fas fa-chevron-up"></i>
+    <a href="#hero" class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
     </a>
 
+    <!-- Scripts -->
     <script src="JS/script.js"></script>
     <script src="JS/contact.js"></script>
+    
+    <!-- Service Worker for PWA (Optional) -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(function(err) {
+                        console.log('ServiceWorker registration failed');
+                    });
+            });
+        }
+    </script>
 </body>
 </html>
