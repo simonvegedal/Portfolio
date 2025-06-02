@@ -1,4 +1,4 @@
-// Enhanced Contact Form Script with Custom Alert
+// Enhanced Contact Form Script with Custom Alert and IP Logging
         const firebaseConfig = {
             apiKey: "AIzaSyB9VbCbqfKrfoCmX6kae_-N_UyHpBUjIjA",
             authDomain: "contact-egedal-devlopment.firebaseapp.com",
@@ -11,6 +11,38 @@
 
         let db;
         let isFirebaseReady = false;
+        let userIP = null;
+
+        // Function to get user's IP address
+        async function getUserIP() {
+            try {
+                // Method 1: Using ipify API (most reliable)
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                return data.ip;
+            } catch (error) {
+                console.log('Primary IP service failed, trying backup...');
+                
+                try {
+                    // Backup Method: Using ipapi.co
+                    const response = await fetch('https://ipapi.co/json/');
+                    const data = await response.json();
+                    return data.ip;
+                } catch (backupError) {
+                    console.log('Backup IP service failed, trying final method...');
+                    
+                    try {
+                        // Final backup: Using jsonip.com
+                        const response = await fetch('https://jsonip.com/');
+                        const data = await response.json();
+                        return data.ip;
+                    } catch (finalError) {
+                        console.error('All IP services failed:', finalError);
+                        return 'Unable to detect';
+                    }
+                }
+            }
+        }
 
         // Custom Alert Functions
         function createCustomAlert() {
@@ -211,7 +243,7 @@
         }
 
         // Initialize Firebase when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', async function() {
             // Initialize Firebase
             if (typeof firebase !== 'undefined') {
                 try {
@@ -225,6 +257,11 @@
                     console.error('Firebase initialization failed:', error);
                 }
             }
+
+            // Get user's IP address on page load
+            console.log('Fetching user IP address...');
+            userIP = await getUserIP();
+            console.log('User IP detected:', userIP);
 
             // Setup contact form
             setupContactForm();
@@ -279,15 +316,27 @@
                 submitBtn.disabled = true;
 
                 try {
-                    // Prepare data
+                    // If IP wasn't fetched earlier, try to get it now
+                    if (!userIP || userIP === 'Unable to detect') {
+                        console.log('Attempting to fetch IP address again...');
+                        userIP = await getUserIP();
+                    }
+
+                    // Prepare data with IP address
                     const contactData = {
                         name: name,
                         email: email,
                         message: message,
+                        ipAddress: userIP || 'Unable to detect',
                         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                         created: new Date().toISOString(),
                         userAgent: navigator.userAgent,
-                        url: window.location.href
+                        url: window.location.href,
+                        // Additional metadata that might be useful
+                        referrer: document.referrer || 'Direct visit',
+                        screenResolution: `${screen.width}x${screen.height}`,
+                        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                        language: navigator.language
                     };
 
                     // Save to Firestore
@@ -296,6 +345,9 @@
                     // Show beautiful custom alert
                     showCustomAlert();
                     form.reset();
+
+                    // Log successful submission (for debugging)
+                    console.log('Contact form submitted successfully with IP:', userIP);
 
                 } catch (error) {
                     console.error('Error saving message:', error);
